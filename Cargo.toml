@@ -1,0 +1,36 @@
+[package]
+name = "loan-management-api"
+version = "1.0.0"
+edition = "2021"
+description = "API REST para gestión de solicitudes de préstamo en plataforma de préstamos en línea"
+license = "MIT"
+
+[dependencies]
+actix-web = "4.5.1"
+actix-rt = "2.9.1"
+diesel = { version = "2.1.0", features = ["postgres", "r2d2", "chrono"] }
+diesel_migrations = "2.1.0"
+dotenv = "0.15.0"
+serde = { version = "1.0.196", features = ["derive"] }
+serde_json = "1.0.111"
+validator = { version = "2.1.0", features = ["derive"] }
+thiserror = "1.0.56"
+tokio = { version = "1.36.0", features = ["full"] }
+postgres = "0.19.7"
+r2d2 = "0.8.10"
+r2d2_diesel = "1.0.0"
+async-trait = "0.1.77"
+chrono = { version = "0.4.31", features = ["serde"] }
+uuid = { version = "1.7.0", features = ["v4", "serde"] }
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "loan-management-api"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
